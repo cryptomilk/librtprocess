@@ -1,6 +1,9 @@
-cmake_minimum_required(VERSION 2.8.9)
+cmake_minimum_required(VERSION 3.3.0)
 project(rtprocess)
 set(CMAKE_BUILD_TYPE Release)
+
+#include cmake files
+include(GNUInstallDirs)
 
 option(OPTION_OMP "Build with OpenMP support" ON)
 
@@ -43,8 +46,8 @@ if(WIN32)
     set(PC_PREFIX "mingw64")
     set(LIBRARY_TYPE "STATIC")
 else()
-    set(INSTALL_PREFIX "/usr/")
-    set(PC_PREFIX "usr")
+    set(INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX}/)
+    set(PC_PREFIX ${CMAKE_INSTALL_PREFIX}/)
     set(LIBRARY_TYPE "SHARED")
 endif()
 
